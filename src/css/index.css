@@ -4,6 +4,13 @@ body {
     font-family: monospace;
 }
 
+#settings {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: underline;
+}
+
 /* Start Field (import)*/
 
 #introduction {
