@@ -97,6 +97,6 @@ export class Game {
         startTimer();
         this.setLoopToKill();
 
-        Bot.move(0.5);
+        Bot.move();
     }
 }

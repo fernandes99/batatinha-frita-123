@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "http-server"
+    "start": "http-server"
   },
   "author": "Roberto Fernandes - github: fernandes99",
   "license": "ISC"

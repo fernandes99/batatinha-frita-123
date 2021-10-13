@@ -1,16 +1,26 @@
 export class Bot {
     static move() {
-        if (globalThis.game.killer.dataset.killing == 'true') return;
+        let self = this;
+
+        if (globalThis.game.killer.dataset.killing == 'true') {
+            globalThis.game.bots.forEach(bot => {
+                let randOnKilling = Math.random() < globalThis.game.settings.botsRateDeath;
+                if (randOnKilling) Bot.setState(bot, 'dead');
+            });
+            return;
+        }
 
         globalThis.game.bots.forEach(bot => {
-            bot.dataset.state = 'stoped';
+            if (bot.dataset.state == 'dead') return;
+
+            Bot.setState(bot, 'stoped');
             let rand = Math.random() < globalThis.game.settings.botsRateMove;
 
             if (!rand) return;
 
             let distance = parseInt(bot.style.bottom, 10) ? parseInt(bot.style.bottom, 10) : 0;
             bot.style.bottom = `${distance + 2}px`;
-            bot.dataset.state = 'moving';
+            Bot.setState(bot, 'moving');
         });
 
         setInterval(this.move, 50);

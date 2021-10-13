@@ -60,12 +60,13 @@ globalThis.game.settings = {};
 globalThis.game.controls = {};
 
 globalThis.game.settings.spaceBetweenPlayers = 50;
-globalThis.game.settings.botsAmount = 5;
+globalThis.game.settings.botsAmount = 10;
 globalThis.game.settings.fieldSize = { width: 600, height: 600 };
 globalThis.game.settings.speedPlayers = 1;
 globalThis.game.settings.speedToKill = .2;
 globalThis.game.settings.timer = 40; // in seconds
 globalThis.game.settings.botsRateMove = 0.5; // 1 = 100%
+globalThis.game.settings.botsRateDeath = 0.007;
 
 
 document.addEventListener('DOMContentLoaded', () => {
