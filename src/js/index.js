@@ -64,16 +64,17 @@ const keyPressListeners = () => {
 
 // Set Settings (TODO)
 globalThis.game = {};
-globalThis.game.spaceBetweenPlayers = 60;
+globalThis.game.spaceBetweenPlayers = 50;
 globalThis.game.botsAmount = 5;
 globalThis.game.fieldSize = { width: 600, height: 600 };
-globalThis.game.speedPlayers = 5;
+globalThis.game.speedPlayers = 1;
 globalThis.speedToKill = .2;
 
 document.addEventListener('DOMContentLoaded', () => {
     Game.create.field(globalThis.game.fieldSize);
     Game.create.bot(globalThis.game.botsAmount);
     Game.create.player();
+
     setGameSources();
     keyPressListeners();
 })
