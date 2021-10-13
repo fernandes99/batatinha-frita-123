@@ -1,0 +1,11 @@
+{
+  "name": "batatinha-frita-123",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "http-server"
+  },
+  "author": "Roberto Fernandes - github: fernandes99",
+  "license": "ISC"
+}
