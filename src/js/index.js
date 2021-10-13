@@ -1,14 +1,6 @@
 import { Game } from './controller/game.js';
 import { Player } from './controller/player.js';
 
-const setGameSources = () => {
-    globalThis.game.field = document.querySelector('#field');
-    globalThis.game.player = document.querySelector('#p0');
-    globalThis.game.killer = document.querySelector('#killer');
-    globalThis.game.intro = document.querySelector('#introduction');
-    globalThis.game.bots = document.querySelectorAll('.bot');
-}
-
 const checkStatePosition = () => {
     const checkArrival = () => {
         let fieldHeight = globalThis.game.field.offsetHeight;
@@ -64,17 +56,24 @@ const keyPressListeners = () => {
 
 // Set Settings (TODO)
 globalThis.game = {};
-globalThis.game.spaceBetweenPlayers = 50;
-globalThis.game.botsAmount = 5;
-globalThis.game.fieldSize = { width: 600, height: 600 };
-globalThis.game.speedPlayers = 1;
-globalThis.speedToKill = .2;
+globalThis.game.settings = {};
+
+globalThis.game.settings.spaceBetweenPlayers = 50;
+globalThis.game.settings.botsAmount = 5;
+globalThis.game.settings.fieldSize = { width: 600, height: 600 };
+globalThis.game.settings.speedPlayers = 1;
+globalThis.game.settings.speedToKill = .2;
+globalThis.game.settings.timer = 40; // in seconds
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    Game.create.field(globalThis.game.fieldSize);
-    Game.create.bot(globalThis.game.botsAmount);
+    Game.create.field(globalThis.game.settings.fieldSize);
+    Game.create.bot(globalThis.game.settings.botsAmount);
     Game.create.player();
 
-    setGameSources();
+    Game.set.sources();
+    Game.set.timer();
+
+    // TODO (extends inside Game.set.events())
     keyPressListeners();
 })

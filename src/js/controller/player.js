@@ -1,7 +1,7 @@
 export class Player {
     static move = (direction) => {
         let current = parseInt(globalThis.game.player.style.bottom, 10);
-        let range = direction == 'up' ? +globalThis.game.speedPlayers : -globalThis.game.speedPlayers;
+        let range = direction == 'up' ? +globalThis.game.settings.speedPlayers : -globalThis.game.settings.speedPlayers;
 
         globalThis.game.player.style.bottom = `${current ? current + range : range}px`;
         Player.setState('moving');
