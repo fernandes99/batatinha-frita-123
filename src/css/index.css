@@ -14,17 +14,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 24px;
     color: white;
     text-align: center;
 }
 
 #introduction b {
-    font-size: 1em;
-}
-
-#introduction span {
-    font-size: .8em;
+    font-size: 1.2em;
 }
 
 #timer:before {
@@ -74,15 +70,15 @@ body {
     position: relative;
 }
 
-.player[data-state='dead'] {
+.player[data-state='dead'], .bot[data-state='dead'] {
     background-color: red;
 }
 
-.player[data-state='winner'] {
+.player[data-state='winner'], .bot[data-state='winner'] {
     background-color: green;
 }
 
-.player[data-state='moving'] {
+.player[data-state='moving'], .bot[data-state='moving'] {
     background-image: url(../assets/GUI/player/player01-move.gif);
 }
 

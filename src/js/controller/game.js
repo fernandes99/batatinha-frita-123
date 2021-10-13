@@ -1,3 +1,4 @@
+import { Bot } from './bot.js';
 import { Player } from './player.js';
 
 export class Game {
@@ -66,6 +67,7 @@ export class Game {
 
         audio.playbackRate = speed;
         audio.play();
+
         audio.addEventListener("ended", () => {
             console.log('Killer is Killing');
             globalThis.game.killer.dataset.killing = 'true';
@@ -94,5 +96,7 @@ export class Game {
 
         startTimer();
         this.setLoopToKill();
+
+        Bot.move(0.5);
     }
 }
