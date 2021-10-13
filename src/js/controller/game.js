@@ -1,13 +1,13 @@
 export class Game {
     static create = {
-        field(size) {
-            document.body.innerHTML = `<div id="field"></div>`;
+        field (size) {
             globalThis.game.field = document.querySelector('#field');
-            globalThis.game.field.style.width = size.width;
-            globalThis.game.field.style.height = size.height;
+
+            globalThis.game.field.style.width = `${size.width}px`;
+            globalThis.game.field.style.height = `${size.height}px`;
         },
 
-        bot(amount) {
+        bot (amount) {
             for (let i = 0; i < amount; i++) {
                 const playersContainer = document.querySelector('#players');
                 let position = i * globalThis.game.spaceBetweenPlayers;

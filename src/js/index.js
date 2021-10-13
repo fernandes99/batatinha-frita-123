@@ -1,32 +1,5 @@
 import { Game } from './controller/game.js';
-
-class Player {
-    static create = () => {
-
-    }
-
-    static move = (direction) => {
-        let current = parseInt(globalThis.game.player.style.bottom, 10);
-        let range = direction == 'up' ? +globalThis.game.speedPlayers : -globalThis.game.speedPlayers;
-
-        globalThis.game.player.style.bottom = `${current ? current + range : range}px`;
-        Player.setState('moving');
-    }
-
-    static setState = (state) => {
-        globalThis.game.player.dataset.state = state;
-
-        if (state == 'dead') {
-            alert("Você perdeu!");
-            setTimeout(() => location.reload(), 500);
-        }
-
-        if (state == 'winner') {
-            alert("Você ganhou!");
-            setTimeout(() => location.reload(), 500);
-        }
-    }
-}
+import { Player } from './controller/player.js';
 
 const setGameSources = () => {
     globalThis.game.field = document.querySelector('#field');
@@ -93,11 +66,12 @@ const keyPressListeners = () => {
 globalThis.game = {};
 globalThis.game.spaceBetweenPlayers = 60;
 globalThis.game.botsAmount = 5;
-globalThis.game.fieldSize = { x: 800, y: 400 };
+globalThis.game.fieldSize = { width: 800, height: 800 };
 globalThis.game.speedPlayers = 5;
 globalThis.speedToKill = .2;
 
 document.addEventListener('DOMContentLoaded', () => {
+    Game.create.field(globalThis.game.fieldSize);
     Game.create.bot(globalThis.game.botsAmount);
     Game.create.player();
     setGameSources();
