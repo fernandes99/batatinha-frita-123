@@ -16,6 +16,15 @@ body {
     font-size: 32px;
     color: white;
     font-family: monospace;
+    text-align: center;
+}
+
+#introduction b {
+    font-size: 1em;
+}
+
+#introduction span {
+    font-size: .8em;
 }
 
 #field {

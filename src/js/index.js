@@ -66,7 +66,7 @@ const keyPressListeners = () => {
 globalThis.game = {};
 globalThis.game.spaceBetweenPlayers = 60;
 globalThis.game.botsAmount = 5;
-globalThis.game.fieldSize = { width: 800, height: 800 };
+globalThis.game.fieldSize = { width: 600, height: 600 };
 globalThis.game.speedPlayers = 5;
 globalThis.speedToKill = .2;
 
