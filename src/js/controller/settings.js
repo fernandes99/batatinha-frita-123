@@ -1,3 +1,5 @@
+//TODO: Need Refactor
+
 export class Settings {
     static handle = {
         modal: () => {
@@ -7,7 +9,6 @@ export class Settings {
             }
             const open = () => {
                 element.modal.classList.remove('hide');
-                Settings.handle.configs();
                 Settings.handle.tabs();
             }
             const close = () => element.modal.classList.add('hide');
@@ -58,13 +59,45 @@ export class Settings {
 
             let data = config.get ? JSON.parse(config.get) : config.set({...globalThis.game.settings});
 
-            const input = {
-                fieldSize: document.querySelector('#field-size-settings input'),
-                timer: document.querySelector('#timer-settings input')
+            const saveButton = document.querySelector('#save-settings');
+            const options = {
+                input: {
+                    fieldSize: document.querySelector('#field-size-settings input'),
+                    timer: document.querySelector('#timer-settings input'),
+                },
+
+                actions: {
+                    populate: () => {
+                        options.input.fieldSize.value = `${data.fieldSize.width}, ${data.fieldSize.height}`;
+                        options.input.timer.value = `${data.timer}s`;
+                    },
+
+                    update: () => {
+                        data.fieldSize =
+                            { ...data.fieldSize,
+                                width: parseInt(options.input.fieldSize.value.split(',')[0]),
+                                height: parseInt(options.input.fieldSize.value.split(',')[1])
+                            };
+
+                        data.timer = parseInt(options.input.timer.value);
+
+                        config.set(data);
+                        location.reload();
+                    }
+                },
             }
 
-            input.fieldSize.value = `${data.fieldSize.width}, ${data.fieldSize.height}`;
-            input.timer.value = `${data.timer}s`;
+            Object.values(options.input).forEach(item => {
+                item.onfocus = () => item.parentNode.classList.add('active');
+                item.onblur = () => item.parentNode.classList.remove('active');
+            });
+
+            options.actions.populate();
+            saveButton.onclick = () => {
+                options.actions.update();
+            }
+
+            globalThis.game.settings = data;
         }
     }
 }

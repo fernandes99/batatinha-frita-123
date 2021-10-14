@@ -27,7 +27,7 @@ body {
     background-color: white;
     border-radius: 10px;
     padding: 16px 24px 24px;
-    width: 420px;
+    width: 380px;
 }
 
 #modal-settings .modal-title {
@@ -78,7 +78,7 @@ body {
 
 #modal-settings .modal-content .input-field input,
 #modal-settings .modal-content .input-field:before {
-    transition: all 1s;
+    transition: all .3s;
 }
 
 #modal-settings .modal-content .input-field input {
@@ -110,6 +110,26 @@ body {
     border-color: #de930b;
 }
 
+#modal-settings .modal-actions {
+    
+}
+
+#modal-settings #save-settings {
+    width: 100%;
+    margin: 16px 0 0;
+    display: flex;
+    justify-content: center;
+    background: #ffb52e;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+#modal-settings #save-settings:hover {
+    opacity: .7;
+}
 
 /* Start Field (import)*/
 

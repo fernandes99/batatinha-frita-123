@@ -55,7 +55,7 @@ const keyPressListeners = () => {
     }
 }
 
-// Set Settings (TODO)
+// Set Settings Default (TODO)
 globalThis.game = {};
 globalThis.game.settings = {};
 globalThis.game.settings.spaceBetweenPlayers = 50;
@@ -69,6 +69,9 @@ globalThis.game.settings.botsRateDeath = 0.007;
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    Settings.handle.configs();
+    Settings.handle.modal();
+
     Game.create.field(globalThis.game.settings.fieldSize);
     Game.create.bot(globalThis.game.settings.botsAmount);
     Game.create.player();
@@ -78,6 +81,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TODO (extends inside Game.set.events())
     keyPressListeners();
-
-    Settings.handle.modal();
 })
