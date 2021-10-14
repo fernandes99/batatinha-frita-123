@@ -2,14 +2,114 @@ body {
     display: flex;
     background: #F0D3C0;
     font-family: monospace;
+    overflow-x: hidden;
 }
 
-#settings {
+#button-settings {
     position: absolute;
     top: 20px;
     left: 20px;
     text-decoration: underline;
 }
+
+#modal-settings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-settings .modal-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 16px 24px 24px;
+    width: 420px;
+}
+
+#modal-settings .modal-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#modal-settings .modal-body {
+    margin-top: 10px;
+}
+
+#modal-settings .modal-tabs {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 12px;
+}
+
+#modal-settings .modal-tabs * {
+    opacity: .7;
+    box-shadow: 0 1px 0 #eeeeee;
+    transition: all .3s;
+    padding: 4px 12px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+#modal-settings .modal-tabs .active,
+#modal-settings .modal-tabs > *:hover {
+    font-weight: bold;
+    box-shadow: 0 2px 0 #de930b;
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+#modal-settings .modal-content > * {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#modal-settings .modal-content > *:not(.active) {
+    display: none;
+}
+
+#modal-settings .modal-content .input-field input,
+#modal-settings .modal-content .input-field:before {
+    transition: all 1s;
+}
+
+#modal-settings .modal-content .input-field input {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+#modal-settings .modal-content .input-field:before {
+    content: attr(data-label);
+    position: relative;
+    left: 6px;
+    font-size: 11px;
+    color: #474747;
+    font-weight: bold;
+    padding: 0 4px;
+    background: white;
+    top: 8px;
+}
+
+#modal-settings .modal-content .input-field.active:before {
+    color: #de930b;
+    top: 0px;
+}
+
+#modal-settings .modal-content .input-field.active input {
+    border-color: #de930b;
+}
+
 
 /* Start Field (import)*/
 

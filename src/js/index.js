@@ -1,5 +1,6 @@
 import { Game } from './controller/game.js';
 import { Player } from './controller/player.js';
+import { Settings } from './controller/settings.js';
 
 const checkStatePosition = () => {
     const checkArrival = () => {
@@ -57,8 +58,6 @@ const keyPressListeners = () => {
 // Set Settings (TODO)
 globalThis.game = {};
 globalThis.game.settings = {};
-globalThis.game.controls = {};
-
 globalThis.game.settings.spaceBetweenPlayers = 50;
 globalThis.game.settings.botsAmount = 10;
 globalThis.game.settings.fieldSize = { width: 600, height: 600 };
@@ -79,4 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TODO (extends inside Game.set.events())
     keyPressListeners();
+
+    Settings.handle.modal();
 })

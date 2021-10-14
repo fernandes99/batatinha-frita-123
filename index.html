@@ -21,6 +21,7 @@
     <link rel="preload" href="./src/assets/GUI/player/player01-move.gif" as="image">
 
 </head>
+
 <body>
     <div id="field">
         <div id="timer" data-timer=""></div>
@@ -33,6 +34,36 @@
         <span><b>Press Enter to Start the Game</b><br>Use arrows to moving</span>
     </div>
 
-    <button id="settings">Change Settings</button>
+    <button id="button-settings">Change Settings</button>
+    <div id="modal-settings" class="hide">
+        <div class="modal-container">
+            <span class="modal-title">
+                Settings:
+            </span>
+            <div class="modal-body">
+                <ul class="modal-tabs">
+                    <li class="active" id="general-tab">General</li>
+                    <li id="players-tab">Players</li>
+                    <li id="bots-tab">Bots</li>
+                </ul>
+
+                <div class="modal-content">
+                    <div class="active" id="general-content">
+                        <div class="input-field" id="field-size-settings" data-label="Field Size" >
+                            <input placeholder="Width, Height" value=""></input>
+                        </div>
+                        <div class="input-field" id="timer-settings" data-label="Timer" >
+                            <input placeholder="Timer Seconds" value=""></input>
+                        </div>
+                    </div>
+                    <div id="players-content">PLAYERS</div>
+                    <div id="bots-content">BOTS</div>
+                </div>
+            </div>
+            <div class="modal-actions">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
