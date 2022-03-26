@@ -59,17 +59,31 @@ export class Settings {
 
             let data = config.get ? JSON.parse(config.get) : config.set({...globalThis.game.settings});
 
+            console.log(JSON.stringify(data))
+
             const saveButton = document.querySelector('#save-settings');
             const options = {
                 input: {
                     fieldSize: document.querySelector('#field-size-settings input'),
                     timer: document.querySelector('#timer-settings input'),
+                    botsAmount: document.querySelector('#bots-amount-settings input'),
+                    botsRateMove: document.querySelector('#bots-moveRate-settings input'),
+                    botsRateDeath: document.querySelector('#bots-deathRate-settings input'),
+                    playersSpace: document.querySelector('#players-space-settings input'),
+                    playersSpeed: document.querySelector('#players-speed-settings input'),
+                    speedToKill: document.querySelector('#speed-sound-settings input'),
                 },
 
                 actions: {
                     populate: () => {
                         options.input.fieldSize.value = `${data.fieldSize.width}, ${data.fieldSize.height}`;
                         options.input.timer.value = `${data.timer}s`;
+                        options.input.botsAmount.value = `${data.botsAmount}`;
+                        options.input.botsRateMove.value = `${data.botsRateMove}`;
+                        options.input.botsRateDeath.value = `${data.botsRateDeath}`;
+                        options.input.playersSpace.value = `${data.spaceBetweenPlayers}`;
+                        options.input.playersSpeed.value = `${data.speedPlayers}`;
+                        options.input.speedToKill.value = `${data.speedToKill}`;
                     },
 
                     update: () => {
@@ -79,7 +93,13 @@ export class Settings {
                                 height: parseInt(options.input.fieldSize.value.split(',')[1])
                             };
 
-                        data.timer = parseInt(options.input.timer.value);
+                        data.timer = parseFloat(options.input.timer.value);
+                        data.botsAmount = parseFloat(options.input.botsAmount.value);
+                        data.botsRateMove = parseFloat(options.input.botsRateMove.value);
+                        data.botsRateDeath = parseFloat(options.input.botsRateDeath.value);
+                        data.spaceBetweenPlayers = parseFloat(options.input.playersSpace.value);
+                        data.speedPlayers = parseFloat(options.input.playersSpeed.value);
+                        data.speedToKill = parseFloat(options.input.speedToKill.value);
 
                         config.set(data);
                         location.reload();

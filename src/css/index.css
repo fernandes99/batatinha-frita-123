@@ -1,6 +1,6 @@
 body {
     display: flex;
-    background: #F0D3C0;
+    background: radial-gradient(50% 50% at 50% 50%, #A659FE 0%, #6F53FD 100%);
     font-family: monospace;
     overflow-x: hidden;
 }
@@ -9,7 +9,17 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    text-decoration: underline;
+    background: #A23DFE;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #fff;
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25));
+    transition: all .3s;
+}
+
+#button-settings:hover {
+    background: #8e3fd7;
+    filter: drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25));
 }
 
 #modal-settings {
@@ -59,8 +69,9 @@ body {
 #modal-settings .modal-tabs .active,
 #modal-settings .modal-tabs > *:hover {
     font-weight: bold;
-    box-shadow: 0 2px 0 #de930b;
+    box-shadow: 0 2px 0 #A23DFE;
     opacity: 1;
+    color: #A23DFE;
     cursor: pointer;
     background-color: transparent;
 }
@@ -102,12 +113,12 @@ body {
 }
 
 #modal-settings .modal-content .input-field.active:before {
-    color: #de930b;
+    color: #A23DFE;
     top: 0px;
 }
 
 #modal-settings .modal-content .input-field.active input {
-    border-color: #de930b;
+    border-color: #A23DFE;
 }
 
 #modal-settings .modal-actions {
@@ -119,16 +130,21 @@ body {
     margin: 16px 0 0;
     display: flex;
     justify-content: center;
-    background: #ffb52e;
+    background: #A23DFE;
     padding: 8px 24px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: bold;
     transition: all .3s;
+    color: #fff;
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.10));
+    border-bottom: #8e3fd7 5px solid;
+    transition: all .3s;
 }
 
 #modal-settings #save-settings:hover {
-    opacity: .7;
+    background: #8e3fd7;
+    filter: drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25));
 }
 
 /* Start Field (import)*/
@@ -154,8 +170,12 @@ body {
     content: attr(data-timer);
     display: flex;
     position: absolute;
-    top: -36px;
-    right: 20px;
+    top: 8px;
+    right: 8px;
+    background: #000000b5;
+    padding: 0 10px;
+    border-radius: 30px;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -165,29 +185,33 @@ body {
     width: 800px;
     height: 400px;
     margin: auto;
-    border-bottom: #804E29 5px solid;
-    border-radius: 10px;
+    border-bottom: #D1D8FF 5px solid;
+    border-radius: 30px;
     padding: 10px 20px;
-    background-image: url(../assets/images/pattern-field.png);
-    background-repeat: repeat;
-    filter: drop-shadow(0px 7px 30px rgba(108, 67, 36, 0.4));
+    background-color: #fff;
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25));
 }
 
 /* End Field */
 /* Start Killer (import) */
 
 #killer[data-killing='true'] {
-    background-color: red;
+    background-position: 0 0;
+    filter: drop-shadow(0px 0px 3px rgba(220, 2, 2, 1));
 }
 
 #killer {
     position: absolute;
-    background-color: blue;
-    border-radius: 50%;
     top: -50px;
     right: 50%;
-    width: 40px;
-    height: 40px;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url(../assets/GUI/killer/killer-sprite.png);
+    background-size: auto;
+    background-position: 0 100%;
+    filter: drop-shadow(-2px 2px 1px rgba(0, 0, 0, 0.30));
 }
 
 /* End Killer */
@@ -198,27 +222,28 @@ body {
 }
 
 .player[data-state='dead'], .bot[data-state='dead'] {
-    background-color: red;
+    background-position-y: 50px;
+    filter: drop-shadow(0px 0px 3px rgba(220, 2, 2, 1));
 }
 
 .player[data-state='winner'], .bot[data-state='winner'] {
-    background-color: green;
+    filter: drop-shadow(0px 0px 3px rgb(13, 220, 2));
 }
 
 .player[data-state='moving'], .bot[data-state='moving'] {
-    background-image: url(../assets/GUI/player/player01-move.gif);
+    animation: moveSprite .5s steps(4) infinite;
 }
 
-.player, .bot {
+.player, .bot, .killer {
     position: absolute;
-    width: 30px;
+    bottom: 0px;
+    width: 34px;
     height: 50px;
     border-radius: 50%;
-    bottom: 0px;
-    background-image: url(../assets/GUI/player/player01-stoped.png);
-    background-size: 50px;
-    background-position: center;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-image: url(../assets/GUI/player/player-01-sprite.png);
+    background-size: auto;
+    background-position: 0 0;
+    filter: drop-shadow(-2px 2px 1px rgba(0, 0, 0, 0.30));
 }
 
 .player:before {
@@ -227,8 +252,10 @@ body {
     align-items: center;
     justify-content: center;
     top: 45px;
+    right: -2px;
     position: relative;
     font-size: 12px;
+    color: #1b261c;
     font-weight: bold;
 }
 
@@ -247,4 +274,13 @@ body {
 /* Mixins */
 .hide {
     display: none !important;
+}
+
+@keyframes moveSprite {
+    from {
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: 133.3%;
+    }
 }

@@ -34,6 +34,7 @@
         <span><b>Press Enter to Start the Game</b><br>Use arrows to moving</span>
     </div>
 
+    <!-- SETTINGS -->
     <button id="button-settings">Change Settings</button>
     <div id="modal-settings" class="hide">
         <div class="modal-container">
@@ -49,15 +50,35 @@
 
                 <div class="modal-content">
                     <div class="active" id="general-content">
-                        <div class="input-field" id="field-size-settings" data-label="Field Size (width, height)" >
+                        <div class="input-field" id="field-size-settings" data-label="Field Size (default: 800, 600)" >
                             <input placeholder="Width, Height" value=""></input>
                         </div>
-                        <div class="input-field" id="timer-settings" data-label="Timer" >
-                            <input placeholder="Timer Seconds" value=""></input>
+                        <div class="input-field" id="timer-settings" data-label="Timer (default: 40)" >
+                            <input placeholder="Timer in Seconds" value=""></input>
+                        </div>
+                        <div class="input-field" id="speed-sound-settings" data-label="Rate Speed Sound (default: 0.2)" >
+                            <input placeholder="Rate Speed Sound" value=""></input>
                         </div>
                     </div>
-                    <div id="players-content">PLAYERS</div>
-                    <div id="bots-content">BOTS</div>
+                    <div id="players-content">
+                        <div class="input-field" id="players-space-settings" data-label="Players Space Between (default: 50)" >
+                            <input placeholder="Players Space Between" value=""></input>
+                        </div>
+                        <div class="input-field" id="players-speed-settings" data-label="Players Space Between (default: 1)" >
+                            <input placeholder="Players Speed" value=""></input>
+                        </div>
+                    </div>
+                    <div id="bots-content">
+                        <div class="input-field" id="bots-amount-settings" data-label="Bots Amount (default: 10)" >
+                            <input placeholder="Bots Numbers" value=""></input>
+                        </div>
+                        <div class="input-field" id="bots-moveRate-settings" data-label="Bots Move Rate (default: 0.5)" >
+                            <input placeholder="Bots Move Rate (max: 1)" value=""></input>
+                        </div>
+                        <div class="input-field" id="bots-deathRate-settings" data-label="Bots Rate Death (default: 0.007)" >
+                            <input placeholder="Bots Rate Death" value=""></input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-actions">
