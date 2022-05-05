@@ -53,13 +53,13 @@ export class Settings {
 
         configs: () => {
             const config = {
-                get: localStorage.getItem('settings'),
+                get: () => localStorage.getItem('settings'),
                 set: data => localStorage.setItem('settings', JSON.stringify(data))
             }
 
-            let data = config.get ? JSON.parse(config.get) : config.set({...globalThis.game.settings});
+            if (!config.get()) config.set({...globalThis.game.settings});
 
-            console.log(JSON.stringify(data))
+            let data = JSON.parse(config.get());
 
             const saveButton = document.querySelector('#save-settings');
             const options = {
